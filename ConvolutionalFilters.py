@@ -9,6 +9,10 @@ class ConvolutionFilter():
     def __init__(self, image):
         self.image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+        self.sharpen = np.array(([0, -1, 0],
+                                 [-1,  5, -1],
+                                 [0, -1, 0]))
+
         self.sobelX = np.array([[-1, 0, 1],
                                 [-2, 0, 2],
                                 [-1, 0, 1]])
@@ -49,6 +53,12 @@ class ConvolutionFilter():
                 else:
                     filtered_image[row, col] = 0
 
+        return filtered_image
+
+    def applySharpen(self):
+        kernel = self.sharpen
+
+        filtered_image = self.__applyFilter(kernel)
         return filtered_image
 
     def applySobelX(self):
