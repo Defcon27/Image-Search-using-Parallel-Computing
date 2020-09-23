@@ -13,10 +13,6 @@ class ConvolutionFilter():
                                 [-2, 0, 2],
                                 [-1, 0, 1]])
 
-        self.sobelY = np.array([[-1, -2, -1],
-                                [0, 0, 0],
-                                [1, 2, 1]])
-
     def __convolution(self, image_roi, kernel):
         kernel_dimension = len(kernel)
         pixel_sum = 0
@@ -31,7 +27,7 @@ class ConvolutionFilter():
         else:
             return pixel_sum % 255
 
-    def applyFilter(self, kernel):
+    def __applyFilter(self, kernel):
         image = self.image
         filtered_image = np.zeros(image.shape)
 
@@ -45,4 +41,10 @@ class ConvolutionFilter():
                 else:
                     filtered_image[row, col] = 0
 
+        return filtered_image
+
+    def applySobelX(self):
+        kernel = self.sobelX
+
+        filtered_image = self.__applyFilter(kernel)
         return filtered_image
