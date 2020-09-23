@@ -17,6 +17,10 @@ class ConvolutionFilter():
                                 [0,  0,  0],
                                 [1,  2,  1]))
 
+        self.laplacian = np.array(([0,  1, 0],
+                                   [1, -4, 1],
+                                   [0,  1, 0]))
+
     def __convolution(self, image_roi, kernel):
         kernel_dimension = len(kernel)
         pixel_sum = 0
@@ -55,6 +59,12 @@ class ConvolutionFilter():
 
     def applySobelY(self):
         kernel = self.sobelY
+
+        filtered_image = self.__applyFilter(kernel)
+        return filtered_image
+
+    def applyLaplacian(self):
+        kernel = self.laplacian
 
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
