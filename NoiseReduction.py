@@ -7,7 +7,11 @@ import matplotlib.pyplot as plt
 class NoiseReduction():
 
     def __init__(self, image):
-        pass
+        self.image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        self.smallBlur = np.ones((7, 7), dtype="float") * (1.0 / (7 * 7))
+
+        self.largeBlur = np.ones((21, 21), dtype="float") * (1.0 / (21 * 21))
 
     def __convolution(self, image_roi, kernel):
         kernel_dimension = len(kernel)
@@ -41,3 +45,17 @@ class NoiseReduction():
                     filtered_image[row, col] = 0
 
         return filtered_image
+
+    def applySmallBlur(self):
+        kernel = self.smallBlur
+        image = self.image
+
+        blured_image = cv2.filter2D(image, -1, kernel)
+        return blured_image
+
+    def applyLargeBlur(self):
+        kernel = self.largeBlur
+        image = self.image
+
+        blured_image = cv2.filter2D(image, -1, kernel)
+        return blured_image
