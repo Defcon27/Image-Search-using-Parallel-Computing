@@ -59,3 +59,9 @@ class NoiseReduction():
 
         blured_image = cv2.filter2D(image, -1, kernel)
         return blured_image
+
+    def applyGaussianBlur(self):
+        image = self.image
+
+        filtered_image = cv2.GaussianBlur(image, (9, 9), 0)
+        return filtered_image
