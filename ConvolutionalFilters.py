@@ -78,3 +78,8 @@ class ConvolutionFilter():
 
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
+
+    def applyCannyEdge(self):
+
+        filtered_image = cv2.Canny(self.image, 50, 240)
+        return filtered_image
