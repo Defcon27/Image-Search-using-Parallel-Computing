@@ -24,3 +24,9 @@ def plotRGBDistribution(image_path):
 
     sns.displot(df, x="Intensity", hue="color",
                 kind="kde", fill=True, palette=["C0", "C2", "tomato"])
+
+
+def plotGrayDistribution(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    hist = cv2.calcHist([gray], [0], None, [256], [0, 256])
+    plt.plot(hist)
