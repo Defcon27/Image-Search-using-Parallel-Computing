@@ -27,6 +27,7 @@ def plotRGBDistribution(image_path):
 
 
 def plotGrayDistribution(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    hist = cv2.calcHist([gray], [0], None, [256], [0, 256])
-    plt.plot(hist)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    plt.hist(image.ravel(), bins=255, color="gray")
+    plt.xlabel("Pixel Intensity")
+    plt.ylabel("Pixel Count")
