@@ -30,3 +30,10 @@ def plotGrayDistribution(image, axis):
                  color="dimgray", ax=axis)
     plt.xlabel("Pixel Intensity")
     plt.ylabel("Pixel Count")
+
+
+def plotConvolveDistribution(image, bins, axis):
+    sns.histplot(image.ravel(), bins=bins, element="step",
+                 color="dimgray", ax=axis)
+    plt.xlabel("Pixel Intensity")
+    plt.ylabel("Pixel Count")
