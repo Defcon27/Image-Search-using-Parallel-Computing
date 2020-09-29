@@ -6,9 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def plotRGBDistribution(image_path):
-    image = cv2.imread(image_path)
-    image = cv2.resize(image, (100, 100))
+def plotRGBDistribution(image, axis):
 
     df = pd.DataFrame()
     df["Intensity"] = image[:, :, 0].ravel()
@@ -22,8 +20,8 @@ def plotRGBDistribution(image_path):
     df = df.append(df2)
     df = df.append(df3)
 
-    sns.displot(df, x="Intensity", hue="color",
-                kind="kde", fill=True, palette=["C0", "C2", "tomato"])
+    sns.histplot(df, x="Intensity", bins=256, hue="color",
+                 element="step", palette=["C0", "C2", "tomato"], ax=axis)
 
 
 def plotGrayDistribution(image):
