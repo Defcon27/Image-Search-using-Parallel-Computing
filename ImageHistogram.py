@@ -1,4 +1,3 @@
-import os
 import cv2
 import numpy as np
 import pandas as pd
@@ -22,10 +21,12 @@ def plotRGBDistribution(image, axis):
 
     sns.histplot(df, x="Intensity", bins=256, hue="color",
                  element="step", palette=["C0", "C2", "tomato"], ax=axis)
+    plt.xlabel("Pixel Intensity")
+    plt.ylabel("Pixel Count")
 
 
-def plotGrayDistribution(image):
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    plt.hist(image.ravel(), bins=255, color="gray")
+def plotGrayDistribution(image, axis):
+    sns.histplot(image.ravel(), bins=256, element="step",
+                 color="dimgray", ax=axis)
     plt.xlabel("Pixel Intensity")
     plt.ylabel("Pixel Count")
