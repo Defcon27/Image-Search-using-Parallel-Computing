@@ -34,7 +34,7 @@ start = time.perf_counter()
 
 # executing in order
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    secs = [5, 4, 3]
+    secs = [5, 4, 3, 2, 1, 2, 3, 4, 5]
     results = executor.map(do_some, secs)
 
     for r in results:

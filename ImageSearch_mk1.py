@@ -1,5 +1,4 @@
 import os
-import multiprocessing
 import threading
 import concurrent.futures
 import time
@@ -9,34 +8,46 @@ from FeatureVectors import FeatureVectors
 
 
 def extractFeatureVectors(image_path):
+
     image = cv2.imread(image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = cv2.resize(image, (500, 500))
     featureVectors = FeatureVectors(image)
     vectors = featureVectors.getFeatureVector()
-    return vectors
+
+    imageName = image_path.split("/")[-1]
+    return [imageName, vectors]
 
 
-def ThreadedFeatureExtraction(image_db_path, images_list):
+def ThreadedFeatureExtraction(images_list):
+    features = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        results = [executor.submit(extractFeatureVectors, image_db_path+image)
-                   for image in images_list]
+        results = [executor.submit(extractFeatureVectors, image_path)
+                   for image_path in images_list]
 
     for f in concurrent.futures.as_completed(results):
-        print(f.result())
+        imageName, vectors = f.result()
+        features[imageName] = vectors
+
+    return features
 
 
-start = time.perf_counter()
+if __name__ == "__main__":
 
-image_db_path = "Image_Database/"
-image_paths = []
-for img in os.listdir(image_db_path):
-    image_paths.append(img)
+    start = time.perf_counter()
 
-for image in image_paths:
-    print(extractFeatureVectors(image_db_path + image))
-#ThreadedFeatureExtraction(image_db_path, image_paths)
+    image_db_path = "Image_Database/"
+    image_paths = []
+    for img in os.listdir(image_db_path):
+        image_paths.append(image_db_path+img)
 
+    lists = [image_paths, image_paths, image_paths, image_paths]
 
-end = time.perf_counter()
-print(f"Time : {end-start}")
+    # for image in image_paths:
+    #     print(extractFeatureVectors(image))
+
+    features = ThreadedFeatureExtraction(image_paths)
+    print(features)
+
+    end = time.perf_counter()
+    print(f"Time : {end-start}")
