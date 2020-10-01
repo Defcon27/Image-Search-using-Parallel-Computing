@@ -19,14 +19,10 @@ def extractFeatureVectors(image_path):
 
 def ImageSearch(queryImage):
 
-    start = time.perf_counter()
-
     image_db_path = "Image_Database/"
     image_paths = []
     for img in os.listdir(image_db_path):
         image_paths.append(image_db_path+img)
-
-    lists = [image_paths, image_paths, image_paths, image_paths]
 
     features = {}
     for image in image_paths:
@@ -44,13 +40,8 @@ def ImageSearch(queryImage):
     search = QuerySearch(queryVector, features)
     results = search.performSearch()
 
-    results.sort(key=lambda res: res[1])
-    print(results)
-
+    results.sort(key=lambda res: res[1], reverse=True)
     # for res in results:
     #     print(res)
 
     return results
-
-    end = time.perf_counter()
-    print(f"Time : {end-start}")

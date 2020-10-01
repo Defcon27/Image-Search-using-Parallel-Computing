@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 
 
@@ -22,10 +23,20 @@ class FeatureVectors():
 
         return stdIntensity
 
+    def __getRGBHistogramVector(self):
+        histogram_3d = cv2.calcHist([self.image], [0, 1, 2], None,
+                                    [8, 8, 8], [0, 256, 0, 256, 0, 256])
+        histogram_3d = histogram_3d.ravel()
+        RGBHistogram = list(histogram_3d)
+
+        return RGBHistogram
+
     def getFeatureVector(self):
         featureVectors = []
         meanIntensity = self.__getMeanIntensity()
         stdIntensity = self.__getStdIntensity()
+        rgbHistogram = self.__getRGBHistogramVector()
 
-        featureVectors = meanIntensity+stdIntensity
+        colorVectors = meanIntensity+stdIntensity+rgbHistogram
+        featureVectors = colorVectors
         return featureVectors
