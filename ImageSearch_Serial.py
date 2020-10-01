@@ -33,14 +33,14 @@ def ImageSearch(queryImage):
 
     imageName, queryVector = extractFeatureVectors(queryImage_path)
 
-    print("Features", features)
-    print()
-    print("Query", queryVector)
-    print()
+    # print("Features", features)
+    # print()
+    # print("Query", queryVector)
+    # print()
     search = QuerySearch(queryVector, features)
     results = search.performSearch()
 
-    results.sort(key=lambda res: res[1], reverse=True)
+    results.sort(key=lambda res: res[1])
     # for res in results:
     #     print(res)
 

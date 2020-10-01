@@ -9,7 +9,6 @@ class QuerySearch:
         self.queryFeature = queryFeature
 
     def __cosine_similarity(self, queryVector, vector):
-
         eps = 1e-10
         dot_product = sum(q*v for q, v in zip(queryVector, vector))
 
@@ -24,7 +23,12 @@ class QuerySearch:
         return cosine_similarity
 
     def __chi2_distance(self, queryVector, vector):
-        pass
+        eps = 1e-10
+        dists = [((q - v) ** 2) / (q + v + eps)
+                 for (q, v) in zip(queryVector, vector)]
+        chi2_distance = 0.5 * sum(dists)
+        chi2_distance = round(chi2_distance, 5)
+        return chi2_distance
 
     def performSearch(self):
         searchSimilarityScores = []
