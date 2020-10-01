@@ -30,13 +30,18 @@ class QuerySearch:
         chi2_distance = round(chi2_distance, 5)
         return chi2_distance
 
+    def __SAD_distance(self, queryVector, vector):
+        dists = [abs(q-v) for (q, v) in zip(queryVector, vector)]
+        SAD_distance = sum(dists)
+        return SAD_distance
+
     def performSearch(self):
         searchSimilarityScores = []
 
         for image in self.features:
             queryVector = self.queryFeature
             vector = self.features[image]
-            cosine_similarity = self.__cosine_similarity(queryVector, vector)
+            cosine_similarity = self.__SAD_distance(queryVector, vector)
 
             searchSimilarityScores.append((image, cosine_similarity))
 
