@@ -41,7 +41,5 @@ def ImageSearch(queryImage):
     results = search.performSearch()
 
     results.sort(key=lambda res: res[1])
-    # for res in results:
-    #     print(res)
 
     return results
