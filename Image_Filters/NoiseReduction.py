@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 class NoiseReduction():
 
     def __init__(self, image):
-        self.image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        self.image = image
 
         self.smallBlur = np.ones((7, 7), dtype="float") * (1.0 / (7 * 7))
 

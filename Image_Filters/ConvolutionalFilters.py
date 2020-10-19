@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 class ConvolutionFilter():
 
     def __init__(self, image):
-        self.image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        self.image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 
         self.sharpen = np.array(([0, -1, 0],
                                  [-1,  5, -1],
