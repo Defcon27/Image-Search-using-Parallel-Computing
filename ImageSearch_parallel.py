@@ -41,10 +41,7 @@ def getImg(img):
     return image
 
 
-# if __name__ == "__main__":
 def ImageSearch(queryImage):
-
-    start = time.perf_counter()
 
     image_db_path = "Image_Database/"
     image_paths = []
@@ -53,14 +50,12 @@ def ImageSearch(queryImage):
 
     features = ThreadedFeatureExtraction(image_paths)
 
-    # queryImage = sys.argv[1]
     queryImage_path = image_db_path+queryImage
-
     imageName, queryVector = extractFeatureVectors(queryImage_path)
 
     search = QuerySearch(queryVector, features)
-    results = search.performSearch()
 
+    results = search.performSearch()
     results.sort(key=lambda res: res[1])
 
     return results
