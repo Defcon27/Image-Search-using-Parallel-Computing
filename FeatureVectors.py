@@ -1,11 +1,14 @@
 import cv2
 import numpy as np
+from Image_Filters.NoiseReduction import NoiseReduction
+from Image_Filters.ConvolutionalFilters import ConvolutionFilter
 
 
 class FeatureVectors():
 
     def __init__(self, image):
-        self.image = image
+        self.filter = NoiseReduction(image)
+        self.image = self.filter.applyGaussianBlur()
 
     def __getMeanIntensity(self):
         meanIntensity = []
@@ -25,11 +28,18 @@ class FeatureVectors():
 
     def __getRGBHistogramVector(self):
         histogram_3d = cv2.calcHist([self.image], [0, 1, 2], None,
-                                    [8, 8, 8], [0, 256, 0, 256, 0, 256])
+                                    [12, 12, 12], [0, 256, 0, 256, 0, 256])
         histogram_3d = histogram_3d.ravel()
         RGBHistogram = list(histogram_3d)
 
         return RGBHistogram
+
+    def __getHuMoments(self):
+        filter = ConvolutionFilter(self.image)
+        canny_filtered = filter.applyCannyEdge()
+        canny_huMoments = cv2.HuMoments(cv2.moments(canny_filtered)).flatten()
+        huVector = list(canny_huMoments.ravel())
+        return huVector
 
     def getFeatureVector(self):
         featureVectors = []

@@ -41,7 +41,7 @@ class QuerySearch:
         for image in self.features:
             queryVector = self.queryFeature
             vector = self.features[image]
-            cosine_similarity = self.__SAD_distance(queryVector, vector)
+            cosine_similarity = self.__chi2_distance(queryVector, vector)
 
             searchSimilarityScores.append((image, cosine_similarity))
 
