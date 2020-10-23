@@ -46,7 +46,8 @@ class FeatureVectors():
         meanIntensity = self.__getMeanIntensity()
         stdIntensity = self.__getStdIntensity()
         rgbHistogram = self.__getRGBHistogramVector()
+        huVectors = self.__getHuMoments()
 
         colorVectors = meanIntensity+stdIntensity+rgbHistogram
-        featureVectors = colorVectors
+        featureVectors = colorVectors+huVectors
         return featureVectors
