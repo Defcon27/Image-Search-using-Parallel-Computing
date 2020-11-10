@@ -1,5 +1,13 @@
 # CRISPR--CBIR-based-Rapid-Image-Seach-using-Parallel-Computing
 
+
+[![GitHub last commit](https://img.shields.io/github/last-commit/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Last%20commit&color=green&logo=git&logoColor=white&style=flat-square)](https://github.com/Defcon27/Data-Analysis-of-Indian-Automobile-dataset-using-Machine-Learning-in-R)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Code%20size&logo=python&logoColor=white&style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Repo%20size&color=red&logo=github&logoColor=white&style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Stars&logo=github&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Issues&color=yellow&logo=github&style=flat-square)
+
+
 #### CRISPR is a CBIR(Content Based Image Search) based Image Search application that is capable of retrieving similar images of query image input from a database of images. This system uses the concept of parallel computing to speed up the search thus reducing the time required to retrieve the images. 
 
 ## ABSTRACT
