@@ -10,6 +10,19 @@
 
 #### CRISPR is a CBIR(Content Based Image Search) based Image Search application that is capable of retrieving similar images of query image input from a database of images. This system uses the concept of parallel computing to speed up the search thus reducing the time required to retrieve the images. 
 
+
+<br>
+
+### 🖥️ Technologies and Tools used
+![Python](https://img.shields.io/badge/python-3776AB.svg?&style=for-the-badge&logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white)
+![Python](https://img.shields.io/badge/multithreading-55595c.svg?&style=for-the-badge&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/Opencv-red.svg?&style=for-the-badge&logo=open-source-initiative&logoColor=white)
+![Numpy](https://img.shields.io/badge/numpy-013243.svg?&style=for-the-badge&logo=numpy&logoColor=white)
+![Seaborn](https://img.shields.io/badge/seaborn-5c7da2.svg?&style=for-the-badge&logo=power-bi&logoColor=white)
+
+<br>
+
 ## ABSTRACT
 <p align="justify">
 With the massive  growth of the internet, people can gain access to a massive amount of information. Due to this retrieving the information of interest becomes very difficult. If focused on visual information, the internet contains several kinds of images and other visual information, such as videos, movies in various formats such as JPG, PNG, BMP and even GIF. Hence there is a need for such an image search engine using which the related and exact images can be searched. Content-based image retrieval seeks to find
@@ -29,6 +42,8 @@ With the help of multithreading heavy processes can be divided into multiple thr
 
 
 ## PROPOSED ARCHITECTURE
-<p align="middle"> <img align="right" src='Docs/achitecture.png' width=40%/> <p>
+<p align="middle"> <img src='Docs/architecture.png' width=54%/> </p>
+
+<p align="justified">The proposed architecture consists of primarily three modules which are preprocessing, indexing image, query searching. Firstly, the whole image database paths are parsed and stored in a list data structure. With the help of multithreading library, each core of the system can be assigned certain number of images thus dividing the total workload and processing the image data in parallel. Each core processes the images, indexes the features vectors it had extracted from the image and as each core completes indexing, the vectors are stored in a combined hash table with the key being the name of the image and the value being the respective feature vector of the image. The process is applied to the query image as well and it’s feature vector is queried across the hash table values. The metric used to compare the query image vector with the database image vector will be a chi-square distance measurement and the distance metric results obtained with be sorted, and top 20 results will be returned.</p>
 
 
