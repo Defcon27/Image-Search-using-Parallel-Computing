@@ -42,8 +42,33 @@ With the help of multithreading heavy processes can be divided into multiple thr
 
 
 ## PROPOSED ARCHITECTURE
-<p align="middle"> <img src='Docs/architecture.png' width=54%/> </p>
-
+<p align="middle"> <img src='Docs/architecture.png' width=60%/></p>
 <p align="justified">The proposed architecture consists of primarily three modules which are preprocessing, indexing image, query searching. Firstly, the whole image database paths are parsed and stored in a list data structure. With the help of multithreading library, each core of the system can be assigned certain number of images thus dividing the total workload and processing the image data in parallel. Each core processes the images, indexes the features vectors it had extracted from the image and as each core completes indexing, the vectors are stored in a combined hash table with the key being the name of the image and the value being the respective feature vector of the image. The process is applied to the query image as well and it’s feature vector is queried across the hash table values. The metric used to compare the query image vector with the database image vector will be a chi-square distance measurement and the distance metric results obtained with be sorted, and top 20 results will be returned.</p>
+
+### Preprocessing
+<img align="right" src='Docs/pre.png' width=20%/>
+<p>The first step in preprocessing will be process of noise reduction. Mostly images consist of some noise and unwanted information. They should be removed from images before processing for retrieval by using filters. Different filters method can be used for removal noise. A gaussian blur is applied on images for enhancement in the preprocessing step. The input image will be an RGB image of dimensions more than 2000 x 2000 which shall be reduced to 500 x 500 for ease of computation and to limit memory usage. 
+</p>
+
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+
+### Feature Extraction
+
+<br>
+
+<p align="middle" ><img src='Docs/fea_ex.png' width=80%/>
+  
+For feature extraction the color histogram refinement technique is used. Color histogram is quantized into 256 bins. Each bin is divided into connected regions of pixels using 4-neighborhood rule. The number of regions in each bin is determined. Then the area of each region is calculated. Two color moments are used to calculate features, the first-order moment called mean and second order moment called standard deviation. The mean represents the brightness of image and standard deviation represents the contrast. The dark image has low mean and bright image has high mean. The low contrast image has low and high contrast has high standard deviations. The means and standard deviations are calculated in each bin using the areas of regions. Color is the most prominent and important feature of image because it is the dominant part of human visual perception. It is used to retrieve images in CBIR. For this purpose, various color methods have been used. In these methods color histogram is popular one and mostly used method. Color histogram has the frequency of occurrence of each color in an image. Color histogram is divided into bins of color and each pixel having a specific color belongs to a color bin of that color. It has the characteristics that it represents the global information of the image. Here we use a 3D histogram of bin size of 12 for each channel having a shape of 12x12x12 which corresponds to 1728 features on flattening. This acts as a color distribution descriptor. 
+</p>
+
+
+### Convolution
+
+<p align="middle" ><img src='Docs/Convolution.gif' width=50%/><img src='Docs/apply%20conv.gif' width=50%/></p>
+
+Also, 	as the color images consist of three components therefore the computational cost of feature extraction will be high. To reduce computation cost the color images are converted into grayscale. Now a convolution filter laplacian filter is applied which does edge detection, to obtain a filtered image with edges of objects in image. Hu Moments are normally extracted from the silhouette or outline of an object in an image. By describing the silhouette or outline of an object, we are able to extract a shape feature vector to represent the shape of the object.
 
 
