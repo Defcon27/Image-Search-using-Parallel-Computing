@@ -46,7 +46,7 @@ With the help of multithreading heavy processes can be divided into multiple thr
 
 
 ## PROPOSED ARCHITECTURE
-<p align="middle"> <img src='Docs/architecture.png' width=60%/></p>
+<p align="middle"> <img src='Docs/architecture.png' width=65%/></p>
 <p align="justified">The proposed architecture consists of primarily three modules which are preprocessing, indexing image, query searching. Firstly, the whole image database paths are parsed and stored in a list data structure. With the help of multithreading library, each core of the system can be assigned certain number of images thus dividing the total workload and processing the image data in parallel. Each core processes the images, indexes the features vectors it had extracted from the image and as each core completes indexing, the vectors are stored in a combined hash table with the key being the name of the image and the value being the respective feature vector of the image. The process is applied to the query image as well and it’s feature vector is queried across the hash table values. The metric used to compare the query image vector with the database image vector will be a chi-square distance measurement and the distance metric results obtained with be sorted, and top 20 results will be returned.</p>
 
 ### Preprocessing
@@ -76,3 +76,47 @@ For feature extraction the color histogram refinement technique is used. Color h
 Also, 	as the color images consist of three components therefore the computational cost of feature extraction will be high. To reduce computation cost the color images are converted into grayscale. Now a convolution filter laplacian filter is applied which does edge detection, to obtain a filtered image with edges of objects in image. Hu Moments are normally extracted from the silhouette or outline of an object in an image. By describing the silhouette or outline of an object, we are able to extract a shape feature vector to represent the shape of the object.
 
 
+#### Convolutional Kernels &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Convolution of Images
+
+<p align="middle" ><img src='Docs/kernels.png' width=45%/><img src='Docs/conv.png' width=55%/></p>
+<br>
+
+
+#### RGB Histogram
+<p align="middle" ><img src='Docs/hist.png'/></p>
+
+<p><br></p>
+<p><br></p>
+
+## IMAGE SEARCH RESULTS
+
+#### Query
+<p>&ensp;&ensp;<img src='Docs/que1.png' width=16%/></p>
+
+#### Results
+<p><img src='Docs/res1.png' width=70%/></p>
+<p><br></br>
+
+#### Query
+<p>&ensp;&ensp;<img src='Docs/que2.png' width=16%/></p>
+
+#### Results
+<p><img src='Docs/res2.png' width=70%/></p>
+<p><br></br>
+
+#### Query
+<p>&ensp;&ensp;<img src='Docs/que3.png' width=16%/></p>
+
+#### Results
+<p><img src='Docs/res3.png' width=70%/></p>
+<p><br></br>
+
+
+
+## PERFORMANCE EVALUATION
+
+#### Serial vs Parallel Search Execution Time
+<p><img src='Docs/g1.png' width=50%/></p>
+
+#### SpeedUp
+<p><img src='Docs/g2.png' width=50%/></p>
