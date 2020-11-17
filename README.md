@@ -120,3 +120,8 @@ Also, 	as the color images consist of three components therefore the computation
 
 #### SpeedUp
 <p><img src='Docs/g2.png' width=50%/></p>
+
+
+<p><br><p>
+ 
+[📃 Project Report Here](/Docs/Final%20Report.pdf)
