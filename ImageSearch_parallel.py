@@ -10,6 +10,7 @@ from QuerySearch import QuerySearch
 
 
 def extractFeatureVectors(image_path):
+    # Extracts feature vectors for input image
 
     image = cv2.imread(image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -22,6 +23,8 @@ def extractFeatureVectors(image_path):
 
 
 def ThreadedFeatureExtraction(images_list):
+     # Performing feature extraction of databse images using multithreading
+
     features = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = [executor.submit(extractFeatureVectors, image_path)
@@ -42,6 +45,7 @@ def getImg(img):
 
 
 def ImageSearch(queryImage):
+    # Performs Image Search using Query image
 
     image_db_path = "Image_Database/"
     image_paths = []
