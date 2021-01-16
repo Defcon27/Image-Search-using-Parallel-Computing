@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 
 class NoiseReduction():
+    """Converts input image to grayscale and reduces noise in the image"""
 
     def __init__(self, image):
         self.image = image
@@ -14,6 +15,8 @@ class NoiseReduction():
         self.largeBlur = np.ones((21, 21), dtype="float") * (1.0 / (21 * 21))
 
     def __convolution(self, image_roi, kernel):
+        # This function convolves the input kernel on the input image region of interest 
+
         kernel_dimension = len(kernel)
         pixel_sum = 0
 
@@ -28,6 +31,10 @@ class NoiseReduction():
             return pixel_sum % 255
 
     def __applyFilter(self, kernel):
+        """ Returns convolved image 
+        Applies the input convolution filter onto the image 
+        """
+
         image = self.image
         kernel_dimension = len(kernel)
         kernel_margin = kernel_dimension//2
@@ -47,21 +54,24 @@ class NoiseReduction():
         return filtered_image
 
     def applySmallBlur(self):
+        """Returns image applied with small blur filter"""
+
         kernel = self.smallBlur
         image = self.image
-
         blured_image = cv2.filter2D(image, -1, kernel)
         return blured_image
 
     def applyLargeBlur(self):
+        """Returns image applied with large blur filter"""
+
         kernel = self.largeBlur
         image = self.image
-
         blured_image = cv2.filter2D(image, -1, kernel)
         return blured_image
 
     def applyGaussianBlur(self):
-        image = self.image
+        """Returns image applied with Gaussian blur filter"""
 
+        image = self.image
         filtered_image = cv2.GaussianBlur(image, (9, 9), 0)
         return filtered_image

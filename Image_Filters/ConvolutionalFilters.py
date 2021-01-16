@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 
 class ConvolutionFilter():
+    """Converts input image to grayscale and applies various convolution filters"""
 
     def __init__(self, image):
         self.image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
@@ -26,6 +27,8 @@ class ConvolutionFilter():
                                    [0,  1, 0]))
 
     def __convolution(self, image_roi, kernel):
+        # This function convolves the input kernel on the input image region of interest 
+
         kernel_dimension = len(kernel)
         pixel_sum = 0
 
@@ -40,6 +43,10 @@ class ConvolutionFilter():
             return pixel_sum % 255
 
     def __applyFilter(self, kernel):
+        """ Returns convolved image 
+        Applies the input convolution filter onto the image 
+        """
+
         image = self.image
         filtered_image = np.zeros(image.shape)
 
@@ -56,30 +63,31 @@ class ConvolutionFilter():
         return filtered_image
 
     def applySharpen(self):
+        """Returns image convolved with Sharpening filter"""
         kernel = self.sharpen
-
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
 
     def applySobelX(self):
+        """Returns image convolved with SobelX filter"""
         kernel = self.sobelX
-
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
 
     def applySobelY(self):
+        """Returns image convolved with SobelY filter"""
         kernel = self.sobelY
-
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
 
     def applyLaplacian(self):
+        """Returns image convolved with Laplacian filter"""
         kernel = self.laplacian
-
         filtered_image = self.__applyFilter(kernel)
         return filtered_image
 
     def applyCannyEdge(self):
+        """Returns image convolved with CannyEdge filter"""
 
         filtered_image = cv2.Canny(self.image, 50, 240)
         return filtered_image
