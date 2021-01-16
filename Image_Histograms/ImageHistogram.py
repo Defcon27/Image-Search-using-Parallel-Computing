@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def plotRGBDistribution(image, axis):
+    # Plots RGB distribution using Histogram of input image
 
     df = pd.DataFrame()
     df["Intensity"] = image[:, :, 0].ravel()
@@ -26,6 +27,8 @@ def plotRGBDistribution(image, axis):
 
 
 def plotGrayDistribution(image, axis):
+    # Plots Gray Intensity distribution using Histogram of input image
+
     sns.histplot(image.ravel(), bins=256, element="step",
                  color="dimgray", ax=axis)
     plt.xlabel("Pixel Intensity")
@@ -33,6 +36,8 @@ def plotGrayDistribution(image, axis):
 
 
 def plotConvolveDistribution(image, bins, axis):
+    # Plots Gray Intensity distribution using Histogram of input convolved image
+
     sns.histplot(image.ravel(), bins=bins, element="step",
                  color="dimgray", ax=axis)
     plt.xlabel("Pixel Intensity")
