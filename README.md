@@ -50,7 +50,7 @@ With the help of multithreading heavy processes can be divided into multiple thr
 
 
 ## PROPOSED ARCHITECTURE
-<p align="middle"> <img src='Docs/architecture.png' width=65%/></p>
+<p align="middle"> <img src='Docs/architecture.png' width=50%/></p>
 <p align="justified">The proposed architecture consists of primarily three modules which are preprocessing, indexing image, query searching. Firstly, the whole image database paths are parsed and stored in a list data structure. With the help of multithreading library, each core of the system can be assigned certain number of images thus dividing the total workload and processing the image data in parallel. Each core processes the images, indexes the features vectors it had extracted from the image and as each core completes indexing, the vectors are stored in a combined hash table with the key being the name of the image and the value being the respective feature vector of the image. The process is applied to the query image as well and it’s feature vector is queried across the hash table values. The metric used to compare the query image vector with the database image vector will be a chi-square distance measurement and the distance metric results obtained with be sorted, and top 20 results will be returned.</p>
 
 ### Preprocessing
