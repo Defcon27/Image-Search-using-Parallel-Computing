@@ -22,6 +22,10 @@
 ![Seaborn](https://img.shields.io/badge/seaborn-5c7da2.svg?&style=for-the-badge&logo=power-bi&logoColor=white)
 
 
+#### 🗃️Dataset
+[INRIA Holidays dataset](https://lear.inrialpes.fr/~jegou/data.php) has been utilized to demonstrate the image search.
+Get the data [here](ftp://ftp.inrialpes.fr/pub/lear/douze/data/jpg1.tar.gz)!
+
 #### 📊 Get Presentation Here  
 [![PPT](https://img.shields.io/badge/PRESENTATION-D83B01.svg?&style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)](https://drive.google.com/file/d/1eh4uGQVOhoDLhHozX9tYEfUoMP-aDaMx/view?usp=sharing)
 
