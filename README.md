@@ -1,4 +1,4 @@
-# CRISPR--CBIR-based-Rapid-Image-Seach-using-Parallel-Computing
+# CRISP--Content-based-Rapid-Image-Seach-using-Parallel-Computing
 
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Last%20commit&color=green&logo=git&logoColor=white&style=flat)](https://github.com/Defcon27/Data-Analysis-of-Indian-Automobile-dataset-using-Machine-Learning-in-R)
