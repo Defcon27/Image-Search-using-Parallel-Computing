@@ -8,7 +8,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/Defcon27/Rapid-Image-Search-using-Parallel-Computing?label=Issues&color=yellow&logo=github&style=flat)
 
 
-#### CRISPR is a CBIR(Content Based Image Search) based Image Search application that is capable of retrieving similar images of query image input from a database of images. This system uses the concept of parallel computing to speed up the search thus reducing the time required to retrieve the images. 
+#### CRISP is a Content-based Image Search application that is capable of retrieving similar images of query image input from a database of images. This system uses the concept of parallel computing to speed up the search thus reducing the time required to retrieve the images. 
 
 
 <br>
